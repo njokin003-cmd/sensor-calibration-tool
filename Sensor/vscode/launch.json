@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run Calibration Tool",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "C:\\Users\\spectre\\Downloads\\Sensor\\calibration_tool_extended (1).exe",
+            "args": ["sensor_data.csv"],
+            "stopAtEntry": false,
+            "cwd": "C:\\Users\\spectre\\Downloads\\Sensor",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe"
+        }
+    ]
+}
