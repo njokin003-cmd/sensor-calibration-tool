@@ -1,50 +1,26 @@
-# Sensor Calibration Tool
+Everything is in powershell
 
-A pure C++17 command-line tool for sensor calibration with linear/polynomial 
-fitting, weighted regression, confidence intervals, and batch processing.
+Step 1 — Clone your GitHub repo
 
-## Features
-- Linear & polynomial regression (any degree)
-- Weighted least squares
-- 95% confidence intervals (pure C++, no Boost)
-- Batch mode — processes a whole folder of CSV files
-- Residual error report (MAE, RMSE, Max error)
+cd C:\Users\YOUR_NAME\Desktop
+git clone https://github.com/YOUR_USERNAME/sensor-calibration-tool.git
+cd sensor-calibration-tool
 
-## Build
+Step 2 — Compile
+g++ -std=c++17 -O2 -o calibration_tool.exe "Sensor/calibration_tool_extended (1).cpp"
 
-### Linux / macOS
-    g++ -std=c++17 -O2 -o calibration_tool src/calibration_tool_extended.cpp
+Step 3 — Run(in powershell)
+# Basic linear fit
+.\calibration_tool.exe Sensor/sensor_data.csv
 
-### Windows (MSYS2/MinGW)
-    g++ -std=c++17 -O2 -o calibration_tool.exe src/calibration_tool_extended.cpp
+# Polynomial degree 2
+.\calibration_tool.exe Sensor/sensor_data.csv --degree 2
 
-## Usage
+# With confidence intervals
+.\calibration_tool.exe Sensor/sensor_data.csv --ci
 
-    # Basic linear fit
-    ./calibration_tool data/sensor_data.csv
+# Weighted regression
+.\calibration_tool.exe Sensor/sensor_weighted.csv --weighted
 
-    # Polynomial degree 3
-    ./calibration_tool data/sensor_data.csv --degree 3
-
-    # Weighted regression
-    ./calibration_tool data/sensor_weighted.csv --weighted
-
-    # With 95% confidence intervals
-    ./calibration_tool data/sensor_data.csv --ci
-
-    # Batch process a folder of CSVs
-    ./calibration_tool --batch data/ --out results/
-
-## CSV Format
-
-Two columns (with optional weight):
-
-    raw,reference
-    0.10,0.50
-    1.05,5.20
-
-Or with weights:
-
-    raw,reference,weight
-    0.10,0.50,1.0
-    1.05,5.20,2.0
+# Batch mode
+.\calibration_tool.exe --batch Sensor/ --out results/
